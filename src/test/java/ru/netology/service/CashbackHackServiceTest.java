@@ -5,6 +5,12 @@ import static org.junit.Assert.*;
 public class CashbackHackServiceTest {
     CashbackHackService service = new CashbackHackService();
 
+    @org.junit.Test
+    public void testRemainBoundaryValuesOne() {
+        org.junit.Assert.assertThrows(RuntimeException.class, () -> {
+            service.remain(-1);
+        });
+    }
 
     @org.junit.Test
     public void testRemainBoundaryValuesTwo() {
@@ -21,7 +27,10 @@ public class CashbackHackServiceTest {
         org.junit.Assert.assertEquals(1, service.remain(999));
     }
 
-  
+    @org.junit.Test
+    public void testRemainBoundaryValuesFive() {
+        org.junit.Assert.assertEquals(0, service.remain(1000));
+    }
 
     @org.junit.Test
     public void testRemainBoundaryValuesSix() {
