@@ -3,7 +3,12 @@ package ru.netology.service;
 public class CashbackHackServiceTest {
     CashbackHackService service = new CashbackHackService();
 
-
+    @org.testng.annotations.Test
+    public void testRemainBoundaryValuesOne() {
+        org.testng.Assert.assertThrows(RuntimeException.class, () -> {
+            service.remain(-1);
+        });
+    }
 
     @org.testng.annotations.Test
     public void testRemainBoundaryValuesTwo() {
@@ -20,7 +25,10 @@ public class CashbackHackServiceTest {
         org.testng.Assert.assertEquals(service.remain(999), 1);
     }
 
-
+    @org.testng.annotations.Test
+    public void testRemainBoundaryValuesFive() {
+        org.testng.Assert.assertEquals(service.remain(1000), 0);
+    }
 
     @org.testng.annotations.Test
     public void testRemainBoundaryValuesSix() {
